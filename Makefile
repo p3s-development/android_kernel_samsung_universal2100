@@ -556,12 +556,15 @@ ifdef building_out_of_srctree
 	{ echo "# this is build directory, ignore it"; echo "*"; } > .gitignore
 endif
 
-PLATFORM_VERSION = 11
-ANDROID_MAJOR_VERSION=r
+PLATFORM_VERSION ?= 11
+ANDROID_MAJOR_VERSION = r
+SEC_BUILD_CONF_VENDOR_BUILD_OS = 13
 @echo "PLATFORM_VERSION: $(PLATFORM_VERSION)"
 @echo "ANDROID_MAJOR_VERSION: $(ANDROID_MAJOR_VERSION)"
+@echo "SEC_BUILD_CONF_VENDOR_BUILD_OS: $(SEC_BUILD_CONF_VENDOR_BUILD_OS)"
 export PLATFORM_VERSION
 export ANDROID_MAJOR_VERSION
+export SEC_BUILD_CONF_VENDOR_BUILD_OS
 
 ifneq ($(shell $(CC) --version 2>&1 | head -n 1 | grep clang),)
 ifneq ($(CROSS_COMPILE),)
