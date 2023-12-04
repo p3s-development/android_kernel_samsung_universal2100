@@ -34,6 +34,3 @@ obj-$(CONFIG_CGROUP_DEVICE)		+= device_cgroup.o
 # Object integrity file lists
 subdir-$(CONFIG_INTEGRITY)		+= integrity
 obj-$(CONFIG_INTEGRITY)			+= integrity/
-
-obj-y += samsung/mz/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
-obj-y += samsung/mz_tee_driver/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
