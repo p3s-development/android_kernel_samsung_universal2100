@@ -3599,6 +3599,21 @@ static int decon_set_vrr(struct decon_device *decon,
 	regs->fps_update = 0;
 	vrr_config = &regs->vrr_config;
 	vrr_state = win_data->config[DECON_WIN_UPDATE_IDX].state;
+	
+        if ((vrr_state != DECON_WIN_STATE_VRR_NORMALMODE) &&
+                (vrr_state != DECON_WIN_STATE_VRR_HSMODE) &&
+                (vrr_state != DECON_WIN_STATE_VRR_PASSIVEMODE)) {
+		u32 config_id = win_data->extra.config_id;
+                printk(KERN_WARNING "[VRR] chosen config_id is %d\n", config_id);
+                if (config_id == 0 || config_id == 1 || config_id == 5 ||
+                     config_id == 6 || config_id == 10 || config_id == 11) {
+                     vrr_state = DECON_WIN_STATE_VRR_HSMODE;
+                } else {
+                     vrr_state = DECON_WIN_STATE_VRR_NORMALMODE;
+                }
+        }
+
+		
 	if ((vrr_state != DECON_WIN_STATE_VRR_NORMALMODE) &&
 		(vrr_state != DECON_WIN_STATE_VRR_HSMODE) &&
 		(vrr_state != DECON_WIN_STATE_VRR_PASSIVEMODE)) {

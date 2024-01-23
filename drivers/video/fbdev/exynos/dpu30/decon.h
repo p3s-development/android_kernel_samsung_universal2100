@@ -686,7 +686,8 @@ struct decon_reg_data {
 #if IS_ENABLED(CONFIG_MCD_PANEL)
 struct decon_win_config_extra {
 	int remained_frames;
-	u32 reserved[7];
+	u32 config_id;
+	u32 reserved[6];
 };
 
 struct decon_win_config_data_old {
